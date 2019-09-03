@@ -1,0 +1,13 @@
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\bin\Release\The Sqares.exe.manifest
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\bin\Release\The Sqares.application
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\bin\Release\The Sqares.exe
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\bin\Release\The Sqares.pdb
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\bin\Release\The Sqares.xml
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Release\WindowsApplication1.Form1.resources
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Release\WindowsApplication1.Resources.resources
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Release\WindowsApplication7.vbproj.GenerateResource.Cache
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Release\The Sqares.exe.manifest
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Release\The Sqares.application
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Release\The Sqares.exe
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Release\The Sqares.xml
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Release\The Sqares.pdb

@@ -1,0 +1,5 @@
+/home/ipeterov/imagefilter/imagefilter/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/ipeterov/imagefilter/imagefilter/bin/Debug/imagefilter.exe.mdb
+/home/ipeterov/imagefilter/imagefilter/bin/Debug/imagefilter.exe
+/home/ipeterov/imagefilter/imagefilter/obj/x86/Debug/imagefilter.exe
+/home/ipeterov/imagefilter/imagefilter/obj/x86/Debug/imagefilter.exe.mdb

@@ -1,0 +1,8 @@
+setup.py
+TemplatePackage.egg-info/PKG-INFO
+TemplatePackage.egg-info/SOURCES.txt
+TemplatePackage.egg-info/dependency_links.txt
+TemplatePackage.egg-info/top_level.txt
+foopackage/__init__.py
+foopackage/data.txt
+foopackage/foomodule.c

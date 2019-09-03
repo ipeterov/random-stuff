@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.20617.1 PREVIEW
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WindowsApplication7", "WindowsApplication7\WindowsApplication7.vbproj", "{830F8CF9-7890-4206-8A9D-E163108DB091}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{830F8CF9-7890-4206-8A9D-E163108DB091}.Debug|x64.ActiveCfg = Debug|x64
+		{830F8CF9-7890-4206-8A9D-E163108DB091}.Debug|x64.Build.0 = Debug|x64
+		{830F8CF9-7890-4206-8A9D-E163108DB091}.Debug|x86.ActiveCfg = Debug|x86
+		{830F8CF9-7890-4206-8A9D-E163108DB091}.Debug|x86.Build.0 = Debug|x86
+		{830F8CF9-7890-4206-8A9D-E163108DB091}.Debug|x86.Deploy.0 = Debug|x86
+		{830F8CF9-7890-4206-8A9D-E163108DB091}.Release|x64.ActiveCfg = Release|x64
+		{830F8CF9-7890-4206-8A9D-E163108DB091}.Release|x64.Build.0 = Release|x64
+		{830F8CF9-7890-4206-8A9D-E163108DB091}.Release|x86.ActiveCfg = Release|x86
+		{830F8CF9-7890-4206-8A9D-E163108DB091}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

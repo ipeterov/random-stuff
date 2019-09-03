@@ -1,0 +1,5 @@
+up
+loop 3
+ paint
+ right
+down

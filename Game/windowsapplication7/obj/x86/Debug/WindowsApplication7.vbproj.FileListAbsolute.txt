@@ -1,0 +1,37 @@
+C:\Users\Илья\documents\visual studio 2010\Projects\WindowsApplication7\WindowsApplication7\obj\x86\Debug\WindowsApplication1.Form1.resources
+C:\Users\Илья\documents\visual studio 2010\Projects\WindowsApplication7\WindowsApplication7\obj\x86\Debug\WindowsApplication1.Resources.resources
+G:\WindowsApplication7\WindowsApplication7\obj\x86\Debug\WindowsApplication7.exe
+G:\WindowsApplication7\WindowsApplication7\obj\x86\Debug\WindowsApplication7.xml
+G:\WindowsApplication7\WindowsApplication7\obj\x86\Debug\WindowsApplication7.pdb
+G:\WindowsApplication7\WindowsApplication7\bin\Debug\WindowsApplication7.exe
+G:\WindowsApplication7\WindowsApplication7\bin\Debug\WindowsApplication7.pdb
+G:\WindowsApplication7\WindowsApplication7\bin\Debug\WindowsApplication7.xml
+G:\WindowsApplication7\WindowsApplication7\obj\x86\Debug\ResolveAssemblyReference.cache
+G:\WindowsApplication7\WindowsApplication7\obj\x86\Debug\WindowsApplication1.Form1.resources
+G:\WindowsApplication7\WindowsApplication7\obj\x86\Debug\WindowsApplication1.Resources.resources
+G:\WindowsApplication7\WindowsApplication7\obj\x86\Debug\GenerateResource.read.1.tlog
+G:\WindowsApplication7\WindowsApplication7\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Илья\Documents\Visual Studio 2010\Projects\WindowsApplication7\WindowsApplication7\bin\Debug\Game.exe.manifest
+C:\Users\Илья\Documents\Visual Studio 2010\Projects\WindowsApplication7\WindowsApplication7\bin\Debug\Game.application
+C:\Users\Илья\Documents\Visual Studio 2010\Projects\WindowsApplication7\WindowsApplication7\bin\Debug\Game.exe
+C:\Users\Илья\Documents\Visual Studio 2010\Projects\WindowsApplication7\WindowsApplication7\bin\Debug\Game.pdb
+C:\Users\Илья\Documents\Visual Studio 2010\Projects\WindowsApplication7\WindowsApplication7\bin\Debug\Game.xml
+C:\Users\Илья\Documents\Visual Studio 2010\Projects\WindowsApplication7\WindowsApplication7\obj\x86\Debug\Game.exe.manifest
+C:\Users\Илья\Documents\Visual Studio 2010\Projects\WindowsApplication7\WindowsApplication7\obj\x86\Debug\Game.application
+C:\Users\Илья\Documents\Visual Studio 2010\Projects\WindowsApplication7\WindowsApplication7\obj\x86\Debug\Game.exe
+C:\Users\Илья\Documents\Visual Studio 2010\Projects\WindowsApplication7\WindowsApplication7\obj\x86\Debug\Game.xml
+C:\Users\Илья\Documents\Visual Studio 2010\Projects\WindowsApplication7\WindowsApplication7\obj\x86\Debug\Game.pdb
+C:\Users\Илья\Documents\Visual Studio 2010\Projects\WindowsApplication7\WindowsApplication7\obj\x86\Debug\WindowsApplication7.vbproj.GenerateResource.Cache
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Debug\WindowsApplication1.Form1.resources
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Debug\WindowsApplication1.Resources.resources
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Debug\WindowsApplication7.vbproj.GenerateResource.Cache
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\bin\Debug\The Sqares.exe.manifest
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\bin\Debug\The Sqares.application
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\bin\Debug\The Sqares.exe
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\bin\Debug\The Sqares.pdb
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\bin\Debug\The Sqares.xml
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Debug\The Sqares.exe.manifest
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Debug\The Sqares.application
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Debug\The Sqares.exe
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Debug\The Sqares.xml
+C:\Users\Илья\Google Диск\Game\WindowsApplication7\obj\x86\Debug\The Sqares.pdb

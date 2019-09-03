@@ -1,0 +1,2 @@
+http://practicalcryptography.com/miscellaneous/machine-learning/voice-activity-detection-vad-tutorial/
+https://ru.wikipedia.org/wiki/Voice_Activity_Detection
