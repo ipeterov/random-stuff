@@ -1,3 +1,4 @@
+import time
 from types import SimpleNamespace
 
 import pygame
@@ -10,6 +11,7 @@ MULTIPLIER = 0.4
 DEPTH = 5
 COLOR = True
 GFX = True
+STEP_TIME = 0.1
 
 
 def center_square(x, y, size, color=(255, 255, 255), gfx=False):
@@ -90,6 +92,11 @@ def draw_small_squares(big_square, direction, depth, max_depth):
 
 		if depth < max_depth:
 			draw_small_squares(new_square, new_direction, depth + 1, max_depth)
+
+	if STEP_TIME:
+		time.sleep(0.2)
+		pygame.display.flip()
+
 
 
 if __name__ == '__main__':
