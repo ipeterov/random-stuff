@@ -32,7 +32,6 @@ def draw_line(start, angle, length, thickness):
 	)
 
 	line = SimpleNamespace()
-	line.start = start
 	line.end = end
 	line.angle = angle
 	line.length = length
