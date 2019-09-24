@@ -13,17 +13,6 @@ def edit_param(params, param_name, key_increase, key_decrease):
         params[param_name] /= 1.05
 
 
-DEFAULT_PARAMS = {
-    'start': (WIDTH / 2, HEIGHT),
-    'starting_length': 300,
-    'starting_thickness': 20,
-    'thickness_multiplier': 0.7,
-    'length_multiplier': 0.7,
-    'angle_1': -60,
-    'angle_2': 40,
-    'max_depth': 14,
-}
-
 if __name__ == '__main__':
     pygame.init()
 
