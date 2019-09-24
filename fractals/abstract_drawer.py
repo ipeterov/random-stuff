@@ -2,7 +2,8 @@ class AbstractDrawer:
     DEFAULT_PARAMS = {}
     PARAMS_SCHEMA = {}
 
-    def __init__(self):
+    def __init__(self, screen):
+        self.screen = screen
         self.reset_to_defaults()
         
     def reset_to_defaults(self):
@@ -19,14 +20,14 @@ class AbstractDrawer:
 
         self.params = clean_params
 
-    def draw(self, screen):
-        width = screen.get_width()
-        height = screen.get_height()
-        start = self.get_start(width, height)
-        self._draw(screen, start)
+    def draw(self):
+        width = self.screen.get_width()
+        height = self.screen.get_height()
+        start = self._get_start(width, height)
+        self._draw(start)
 
-    def get_start(self, width, height):
+    def _get_start(self, width, height):
         raise NotImplementedError()
 
-    def _draw(self, screen, start):
+    def _draw(self, start):
         raise NotImplementedError()

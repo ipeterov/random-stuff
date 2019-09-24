@@ -73,11 +73,10 @@ class TreeDrawer(AbstractDrawer):
             if depth < max_depth:
                 self.draw_branches(new_line, depth + 1, max_depth)
 
-    def get_start(self, width, height):
-        return (width / 2, height)
+    def _get_start(self, width, height):
+        return width / 2, height
 
-    def _draw(self, screen, start):
-        self.screen = screen
+    def _draw(self, start):
         trunk = self.draw_line(
             start,
             -90,
@@ -96,8 +95,8 @@ if __name__ == '__main__':
 
     screen = pygame.display.set_mode(SIZE)
 
-    drawer = TreeDrawer()
-    drawer.draw(screen)
+    drawer = TreeDrawer(screen)
+    drawer.draw()
 
     pygame.display.flip()
 

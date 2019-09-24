@@ -110,11 +110,10 @@ class ThreeSquaresDrawer(AbstractDrawer):
                     max_depth,
                 )
 
-    def get_start(self, width, height):
+    def _get_start(self, width, height):
         return width / 2, height / 2
 
-    def _draw(self, screen, start):
-        self.screen = screen
+    def _draw(self, start):
         startx, starty = start
         starting_square = self.center_square(
             startx,
@@ -136,8 +135,8 @@ if __name__ == '__main__':
 
     screen = pygame.display.set_mode(SIZE)
 
-    drawer = ThreeSquaresDrawer()
-    drawer.draw(screen)
+    drawer = ThreeSquaresDrawer(screen)
+    drawer.draw()
 
     pygame.display.flip()
 

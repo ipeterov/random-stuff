@@ -1,7 +1,10 @@
+# TODO: Print params
+
 import pygame
 
 from tree import TreeDrawer
 from three_squares import ThreeSquaresDrawer
+from pythagoras_tree import PythagorasTreeDrawer
 
 
 SIZE = WIDTH, HEIGHT = 500, 500
@@ -22,6 +25,7 @@ IN_FRACTAL_CONTROLS = [
 FRACTAL_MAPPING = {
     pygame.K_z: TreeDrawer,
     pygame.K_x: ThreeSquaresDrawer,
+    pygame.K_c: PythagorasTreeDrawer,
 }
 
 
@@ -73,7 +77,7 @@ if __name__ == '__main__':
     pygame.init()
 
     screen = pygame.display.set_mode(SIZE)
-    drawer = list(FRACTAL_MAPPING.values())[0]()
+    drawer = list(FRACTAL_MAPPING.values())[0](screen)
 
     while True:
         is_keydown = False
@@ -88,13 +92,13 @@ if __name__ == '__main__':
 
                 for key in FRACTAL_MAPPING:
                     if pressed[key]:
-                        drawer = FRACTAL_MAPPING[key]()
+                        drawer = FRACTAL_MAPPING[key](screen)
 
         params = drawer.params.copy()
         generate_fractal_controls(params, drawer.PARAMS_SCHEMA, is_keydown)
         drawer.set_params(params)
 
         screen.fill(BACKGROUND_COLOR)
-        drawer.draw(screen)
+        drawer.draw()
 
         pygame.display.flip()
