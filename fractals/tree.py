@@ -3,42 +3,32 @@ from types import SimpleNamespace
 
 import pygame
 
-
-SIZE = WIDTH, HEIGHT = 1700, 1400
-DEFAULT_PARAMS = {
-    'start': (WIDTH / 2, HEIGHT),
-    'starting_length': 300,
-    'starting_thickness': 20,
-    'thickness_multiplier': 0.7,
-    'length_multiplier': 0.7,
-    'angle_1': -60,
-    'angle_2': 40,
-    'max_depth': 14,
-}
+from abstract_drawer import AbstractDrawer
 
 
-class TreeDrawer:
+SIZE = WIDTH, HEIGHT = 500, 500
+
+
+class TreeDrawer(AbstractDrawer):
+    DEFAULT_PARAMS = {
+        'starting_length': 100,
+        'starting_thickness': 10,
+        'thickness_multiplier': 0.7,
+        'length_multiplier': 0.7,
+        'angle_1': -60,
+        'angle_2': 40,
+        'max_depth': 7,
+    }
+
     PARAMS_SCHEMA = {
-        'start': tuple,
         'starting_length': float,
         'starting_thickness': float,
         'thickness_multiplier': float,
         'length_multiplier': float,
         'angle_1': float,
         'angle_2': float,
-        'max_depth': lambda val: min(int(val), 16),
+        'max_depth': int,
     }
-
-    def set_params(self, new_params):
-        dirty_params = new_params.copy()
-        clean_params = {}
-        for key, value in dirty_params.items():
-            if key in self.PARAMS_SCHEMA:
-                clean_params[key] = self.PARAMS_SCHEMA[key](value)
-            else:
-                clean_params[key] = value
-
-        self.params = clean_params
 
     def draw_line(self, start, angle, length, thickness):
         end = (
@@ -83,10 +73,13 @@ class TreeDrawer:
             if depth < max_depth:
                 self.draw_branches(new_line, depth + 1, max_depth)
 
-    def draw_tree(self, screen):
+    def get_start(self, width, height):
+        return (width / 2, height)
+
+    def _draw(self, screen, start):
         self.screen = screen
         trunk = self.draw_line(
-            self.params['start'],
+            start,
             -90,
             self.params['starting_length'],
             self.params['starting_thickness'],
@@ -103,9 +96,8 @@ if __name__ == '__main__':
 
     screen = pygame.display.set_mode(SIZE)
 
-    tree_drawer = TreeDrawer()
-    tree_drawer.set_params(DEFAULT_PARAMS)
-    tree_drawer.draw_tree(screen)
+    drawer = TreeDrawer()
+    drawer.draw(screen)
 
     pygame.display.flip()
 
