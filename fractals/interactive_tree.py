@@ -17,12 +17,13 @@ DEFAULT_PARAMS = {
 }
 
 
-
-def edit_param(params, param_name, key_increase, key_decrease):
+def edit_param(params, param_name, key_increase, key_decrease, step=lambda x: x * 1.003):
+    value = params[param_name]
+    diff = step(value) - value
     if pygame.key.get_pressed()[key_increase]:
-        params[param_name] *= 1.001
+        params[param_name] += diff
     elif pygame.key.get_pressed()[key_decrease]:
-        params[param_name] /= 1.001
+        params[param_name] -= diff
 
 
 if __name__ == '__main__':
@@ -38,6 +39,10 @@ if __name__ == '__main__':
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if pygame.key.get_pressed()[pygame.K_SPACE]:
+                    params = DEFAULT_PARAMS.copy()
+                edit_param(params, 'max_depth', pygame.K_u, pygame.K_j, lambda x: x + 1)
 
         edit_param(params, 'starting_length', pygame.K_q, pygame.K_a)
         edit_param(params, 'starting_thickness', pygame.K_w, pygame.K_s)
@@ -45,10 +50,6 @@ if __name__ == '__main__':
         edit_param(params, 'length_multiplier', pygame.K_r, pygame.K_f)
         edit_param(params, 'angle_1', pygame.K_t, pygame.K_g)
         edit_param(params, 'angle_2', pygame.K_y, pygame.K_h)
-        edit_param(params, 'max_depth', pygame.K_u, pygame.K_j)
-
-        if pygame.key.get_pressed()[pygame.K_SPACE]:
-            params = DEFAULT_PARAMS.copy()
 
         screen.fill(BACKGROUND_COLOR)
         tree_drawer.set_params(params)
