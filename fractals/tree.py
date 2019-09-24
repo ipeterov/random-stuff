@@ -5,21 +5,40 @@ import pygame
 
 
 SIZE = WIDTH, HEIGHT = 1700, 1400
-STARTING_LENGTH = 300
-STARTING_THICKNESS = 20
-THICKNESS_MULTIPLIER = 0.7
-LENGTH_MULTIPLIER = 0.7
-ANGLE_1 = -60
-ANGLE_2 = 40
-MAX_DEPTH = 14
+DEFAULT_PARAMS = {
+	'start': (WIDTH / 2, HEIGHT),
+	'starting_length': 300,
+	'starting_thickness': 20,
+	'thickness_multiplier': 0.7,
+	'length_multiplier': 0.7,
+	'angle_1': -60,
+	'angle_2': 40,
+	'max_depth': 14,
+}
 
 
 class TreeDrawer:
-	def __init__(self, params):
-		self.params = params
+	PARAMS_SCHEMA = {
+		'start': tuple,
+		'starting_length': float,
+		'starting_thickness': float,
+		'thickness_multiplier': float,
+		'length_multiplier': float,
+		'angle_1': float,
+		'angle_2': float,
+		'max_depth': lambda val: min(int(val), 16),
+	}
 
 	def set_params(self, new_params):
-		self.params = new_params
+		dirty_params = new_params.copy()
+		clean_params = {}
+		for key, value in dirty_params.items():
+			if key in self.PARAMS_SCHEMA:
+				clean_params[key] = self.PARAMS_SCHEMA[key](value)
+			else:
+				clean_params[key] = value
+
+		self.params = clean_params
 
 	def draw_line(self, start, angle, length, thickness):
 		end = (
@@ -82,20 +101,10 @@ class TreeDrawer:
 if __name__ == '__main__':
 	pygame.init()
 
-	screen = pygame.display.set_mode(SIZE, pygame.RESIZABLE)
+	screen = pygame.display.set_mode(SIZE)
 
-	tree_drawer = TreeDrawer(
-		params={
-			'start': (WIDTH / 2, HEIGHT),
-			'starting_length': STARTING_LENGTH,
-			'starting_thickness': STARTING_THICKNESS,
-			'thickness_multiplier': THICKNESS_MULTIPLIER,
-			'length_multiplier': LENGTH_MULTIPLIER,
-			'angle_1': ANGLE_1,
-			'angle_2': ANGLE_2,
-			'max_depth': MAX_DEPTH,
-		}
-	)
+	tree_drawer = TreeDrawer()
+	tree_drawer.set_params(DEFAULT_PARAMS)
 	tree_drawer.draw_tree(screen)
 
 	pygame.display.flip()
