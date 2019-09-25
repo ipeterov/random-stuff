@@ -11,7 +11,7 @@ SIZE = WIDTH, HEIGHT = 500, 500
 
 class PythagorasTreeDrawer(AbstractDrawer):
     DEFAULT_PARAMS = {
-        'angle': 30,
+        'angle': 45,
         'starting_size': 100,
         'max_depth': 2,
     }
@@ -95,7 +95,7 @@ class PythagorasTreeDrawer(AbstractDrawer):
             self.draw_small_squares(left_square, depth + 1)
             self.draw_small_squares(right_square, depth + 1)
 
-    def _get_start(self, width, height):
+    def _get_default_start(self, width, height):
         return width / 2 - self.params['starting_size'] / 2, height
 
     def _draw(self, start):

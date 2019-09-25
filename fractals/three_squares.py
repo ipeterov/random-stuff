@@ -110,7 +110,7 @@ class ThreeSquaresDrawer(AbstractDrawer):
                     max_depth,
                 )
 
-    def _get_start(self, width, height):
+    def _get_default_start(self, width, height):
         return width / 2, height / 2
 
     def _draw(self, start):

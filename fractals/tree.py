@@ -15,9 +15,9 @@ class TreeDrawer(AbstractDrawer):
         'starting_thickness': 10,
         'thickness_multiplier': 0.7,
         'length_multiplier': 0.7,
-        'angle_1': -60,
+        'angle_1': -40,
         'angle_2': 40,
-        'max_depth': 7,
+        'max_depth': 4,
     }
 
     PARAMS_SCHEMA = {
@@ -73,7 +73,7 @@ class TreeDrawer(AbstractDrawer):
             if depth < max_depth:
                 self.draw_branches(new_line, depth + 1, max_depth)
 
-    def _get_start(self, width, height):
+    def _get_default_start(self, width, height):
         return width / 2, height
 
     def _draw(self, start):
