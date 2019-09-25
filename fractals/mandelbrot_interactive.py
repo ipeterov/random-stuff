@@ -75,6 +75,6 @@ if __name__ == '__main__':
             zoom = DEFAULT_ZOOM
 
         exit_times = mandelbrot_array(SIZE, x, y, zoom)
-        pixel_array = exit_times / MAX_ITERATIONS * 255
+        pixel_array = exit_times / (MAX_ITERATIONS / 255)
         pygame.surfarray.blit_array(screen, pixel_array)
         pygame.display.flip()
