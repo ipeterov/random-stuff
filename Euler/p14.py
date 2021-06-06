@@ -1,6 +1,6 @@
 def collatz_chain_length(starting):
     current = starting
-    length =  1
+    length = 1
     while current > 1:
         if current % 2 == 0:
             current = current / 2

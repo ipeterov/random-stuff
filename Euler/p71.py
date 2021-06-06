@@ -19,14 +19,16 @@ def best_numerator_using_binary(denominator):
             if current > best / denominator:
                 best = center
             binary(center + 1, right_boundary)
-    
+
     binary(0, denominator)
 
     return best
 
+
 def primes_up_to(number) -> list[int]:
     known_primes = []
     for candidate in range(2, number + 1):
+
         def is_prime(candidate):
             candidate_root = candidate ** 0.5
             for known_prime in known_primes:

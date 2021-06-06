@@ -5,6 +5,7 @@ closest_numerator = 2
 closest_denominator = 5
 closest = closest_numerator / closest_denominator
 
+
 def best_numerator_using_binary(denominator):
     best = 0
 
@@ -23,7 +24,7 @@ def best_numerator_using_binary(denominator):
             if current > best / denominator:
                 best = center
             binary(center + 1, right_boundary)
-    
+
     binary(0, denominator)
 
     return best
@@ -42,7 +43,7 @@ for denominator in range(1, 1000001):
 
 # I would have thought this one would be the best, but no
 n = best_numerator_using_binary(1000000)
-print(n/ 1000000,n, 1000000)
+print(n / 1000000, n, 1000000)
 
 # Really close one, but not quite
 print(closest, closest_numerator, closest_denominator)

@@ -4,4 +4,4 @@ class SciNotNumber:
         self.mantissa = mantissa
 
     def __pow__(self, other):
-        exp = self.exponent 
+        exp = self.exponent

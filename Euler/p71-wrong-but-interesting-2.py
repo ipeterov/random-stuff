@@ -12,14 +12,16 @@ def timing(f):
         ts = perf_counter_ns()
         result = f(*args, **kw)
         te = perf_counter_ns()
-        print(f'func:{f.__name__} took: {te-ts}ns')
+        print(f"func:{f.__name__} took: {te-ts}ns")
         return result
+
     return wrap
 
 
 def primes_up_to(number) -> list[int]:
     known_primes = []
     for candidate in range(2, number + 1):
+
         def is_prime(candidate):
             candidate_root = candidate ** 0.5
             for known_prime in known_primes:

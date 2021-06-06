@@ -6,7 +6,7 @@ class Delta:
         self.y = y
 
     def __repr__(self):
-        return f'Дельта ({self.x}, {self.y})'
+        return f"Дельта ({self.x}, {self.y})"
 
     def __neg__(self):
         return self.__class__(-self.x, -self.y)
@@ -31,7 +31,7 @@ class Point(Delta):
     is_strong = True
 
     def __repr__(self):
-        return f'Точка ({self.x}, {self.y})'
+        return f"Точка ({self.x}, {self.y})"
 
 
 GRID_SIZE = 20
@@ -41,6 +41,7 @@ END = Point(GRID_SIZE, GRID_SIZE)
 
 # NOT WORKING
 
+
 def traverse(point):
     if point == END:
         return 1
@@ -49,7 +50,7 @@ def traverse(point):
 
     if point.x < GRID_SIZE:
         paths_count += traverse(point + Delta(1, 0))
-    
+
     if point.y < GRID_SIZE:
         paths_count += traverse(point + Delta(0, 1))
 

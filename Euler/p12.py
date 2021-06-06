@@ -11,9 +11,10 @@ class CachedPrimer:
     def primes_up_to(self, number) -> list[int]:
         if number <= self.biggest_checked:
             index = bisect.bisect_left(self.known_primes, number)
-            return self.known_primes[:index + 1]
+            return self.known_primes[: index + 1]
 
         for candidate in range(self.biggest_checked, number + 1):
+
             def is_prime(candidate):
                 candidate_root = candidate ** 0.5
                 for known_prime in self.known_primes:
@@ -50,7 +51,7 @@ PRIMER = CachedPrimer()
 number = 1
 index = 1
 best_count = 0
-while (count := PRIMER.factors_count(number))  <= 500:
+while (count := PRIMER.factors_count(number)) <= 500:
     index += 1
     number += index
     if count >= best_count:

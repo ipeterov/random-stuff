@@ -8,14 +8,19 @@ def is_palindrome(number):
     for index in range(check_count):
         if s[index] != s[-index - 1]:
             return False
-    
+
     return True
 
-largest = 0
-for a in range(100, 1000):
-    for b in range(100, 1000):
-        product = a*b
-        if product > largest and is_palindrome(product):
-            largest = product
 
-print(largest)
+def solve():
+    largest = 0
+    for a in range(100, 1000):
+        for b in range(100, 1000):
+            product = a * b
+            if product > largest and is_palindrome(product):
+                largest = product
+    return largest
+
+
+if __name__ == "__main__":
+    print(solve())

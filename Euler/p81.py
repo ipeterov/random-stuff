@@ -7,16 +7,16 @@ import heapq
 class PriorityQueue:
     def __init__(self):
         self.elements = []
-    
+
     def empty(self) -> bool:
         return not self.elements
-    
+
     def put(self, item, priority: float):
         heapq.heappush(self.elements, (priority, item))
-    
+
     def get(self):
         return heapq.heappop(self.elements)[1]
-        
+
 
 class Point:
     def __init__(self, x, y):
@@ -24,7 +24,7 @@ class Point:
         self.y = y
 
     def __repr__(self) -> str:
-        return f'Точка: x={self.x}, y={self.y}'
+        return f"Точка: x={self.x}, y={self.y}"
 
     def __hash__(self) -> int:
         return hash((self.x, self.y))
@@ -40,9 +40,9 @@ class Point:
 class Matrix:
     def __init__(self):
         self.data = []
-        with open('p081_matrix.txt') as f:
+        with open("p081_matrix.txt") as f:
             for line in f.readlines():
-                self.data.append([int(value) for value in line.split(',')])
+                self.data.append([int(value) for value in line.split(",")])
 
     @property
     def width(self):
@@ -60,7 +60,7 @@ class Matrix:
 
         if point.x < self.width - 1:
             neighbors.append(Point(point.x + 1, point.y))
-            
+
         if point.y < self.height - 1:
             neighbors.append(Point(point.x, point.y + 1))
 
@@ -79,7 +79,7 @@ class Matrix:
 
             if current == end:
                 break
-            
+
             for next in self.neighbors(current):
                 new_cost = cost_so_far[current] + self.get(next)
                 if next not in cost_so_far or new_cost < cost_so_far[next]:
@@ -97,15 +97,14 @@ class Matrix:
 
     def print_path(self, path):
         for y in range(self.height):
-            line = ''
+            line = ""
             for x in range(self.width):
                 point = Point(x, y)
                 if point in path:
-                    line += 'x'
+                    line += "x"
                 else:
-                    line += '.'
+                    line += "."
             print(line)
-
 
 
 MATRIX = Matrix()

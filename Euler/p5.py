@@ -5,6 +5,7 @@ from collections import Counter, defaultdict
 def primes_up_to(number) -> list[int]:
     known_primes = []
     for candidate in range(2, number + 1):
+
         def is_prime(candidate):
             candidate_root = candidate ** 0.5
             for known_prime in known_primes:
@@ -38,7 +39,6 @@ factors = Counter()
 for i in range(1, 21):
     for factor, power in number_prime_factors(i).items():
         factors[factor] = max(power, factors[factor])
-
 
 
 print(factors)

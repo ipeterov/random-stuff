@@ -1,6 +1,7 @@
 def primes_up_to(number) -> list[int]:
     known_primes = []
     for candidate in range(2, number + 1):
+
         def is_prime(candidate):
             candidate_root = candidate ** 0.5
             for known_prime in known_primes:
@@ -19,4 +20,3 @@ def primes_up_to(number) -> list[int]:
 known_primes = primes_up_to(2000000)
 
 print(sum(known_primes))
-
