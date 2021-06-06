@@ -5,6 +5,14 @@
 		}
 	],
 	"settings": {
-		"python.analysis.extraPaths": ["./Euler"]
+		"python.analysis.extraPaths": [
+			"./Euler"
+		],
+		"editor.formatOnSave": true,
+		"editor.formatOnType": true,
+		"python.formatting.provider": "black",
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": true
+		}
 	}
 }
