@@ -1,27 +1,27 @@
 import bisect
 import collections
-import math
 import itertools
+import math
 
 
 class CachedPrimer:
     def __init__(self):
+        # Pre-fill it a bit to make handling the edge case "2" easier:
+        # it's the only even prime, we can then check just odd numbers
         self.known_primes = [2, 3]
         self.known_primes_set = {2, 3}
         self.biggest_checked = 3
 
-    def is_prime(self, candidate) -> bool:
-        if candidate <= self.biggest_checked:
-            return candidate in self.known_primes_set
-        return candidate in self.primes_up_to(candidate)
+    def _generate_primes(self, stop_at_candidate=None, stop_at_n_primes=None) -> None:
+        def should_stop(candidate):
+            if stop_at_n_primes is not None:
+                return len(self.known_primes) >= stop_at_n_primes
 
-    def primes_up_to(self, number) -> list[int]:
-        if number <= self.biggest_checked:
-            index = bisect.bisect_left(self.known_primes, number)
-            return self.known_primes[: index + 1]
+            return candidate > stop_at_candidate
 
-        step = 2
-        for candidate in range(self.biggest_checked, number + step, step):
+        step = 2  # because even numbers cannot be primes
+        candidate = self.biggest_checked + step
+        while not should_stop(candidate):
 
             def is_prime(candidate):
                 candidate_root = candidate ** 0.5
@@ -36,7 +36,36 @@ class CachedPrimer:
                 self.known_primes.append(candidate)
                 self.known_primes_set.add(candidate)
 
-        self.biggest_checked = number if number % 2 == 1 else number - 1
+            self.biggest_checked = candidate
+
+            candidate += step
+
+    def is_prime(self, candidate) -> bool:
+        self._generate_primes(stop_at_candidate=candidate)
+        return candidate in self.known_primes_set
+
+    def primes_up_to(self, stop_at_candidate=None, stop_at_n_primes=None) -> list[int]:
+        """
+        >>> len(primer.primes_up_to(stop_at_n_primes=10001))
+        10001
+        >>> primer.primes_up_to(30)
+        [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+        >>> primer.primes_up_to(stop_at_n_primes=10)
+        [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+        """
+
+        assert (
+            stop_at_candidate is not None or stop_at_n_primes is not None
+        ), "Must provide stop_at_candidate or stop_at_n_primes"
+
+        if stop_at_candidate is not None and stop_at_candidate <= self.biggest_checked:
+            index = bisect.bisect_right(self.known_primes, stop_at_candidate)
+            return self.known_primes[:index]
+
+        if stop_at_n_primes is not None and stop_at_n_primes <= len(self.known_primes):
+            return self.known_primes[:stop_at_n_primes]
+
+        self._generate_primes(stop_at_candidate, stop_at_n_primes)
 
         return self.known_primes
 

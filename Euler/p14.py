@@ -1,3 +1,6 @@
+import wrapt_timeout_decorator
+
+
 def collatz_chain_length(starting):
     current = starting
     length = 1
@@ -10,15 +13,19 @@ def collatz_chain_length(starting):
     return length
 
 
-best = 0
-best_number = 0
-for n in range(1000000):
-    if n % 10000 == 0:
-        print(n)
+@wrapt_timeout_decorator.timeout(60)
+def solve():
+    """
+    >>> solve()
+    837799
+    """
 
-    length = collatz_chain_length(n)
-    if length > best:
-        best = length
-        best_number = n
+    best = 0
+    best_number = 0
+    for n in range(1000000):
+        length = collatz_chain_length(n)
+        if length > best:
+            best = length
+            best_number = n
 
-print(best, best_number)
+    return best_number

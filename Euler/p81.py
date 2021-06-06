@@ -1,5 +1,7 @@
 import heapq
 
+import wrapt_timeout_decorator
+
 
 # A lot taken from: https://www.redblobgames.com/pathfinding/a-star/introduction.html
 
@@ -107,10 +109,12 @@ class Matrix:
             print(line)
 
 
-MATRIX = Matrix()
-START = Point(0, 0)
-END = Point(79, 79)
+@wrapt_timeout_decorator.timeout(60)
+def solve():
+    matrix = Matrix()
+    start = Point(0, 0)
+    end = Point(79, 79)
 
-path, cost = MATRIX.find_path(START, END)
-MATRIX.print_path(path)
-print(cost)
+    path, cost = matrix.find_path(start, end)
+    # matrix.print_path(path)
+    return cost

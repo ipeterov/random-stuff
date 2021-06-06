@@ -1,5 +1,7 @@
 import math
 
+import wrapt_timeout_decorator
+
 
 NUMBER = (
     "73167176531330624919225119674426574742355349194934"
@@ -26,10 +28,17 @@ NUMBER = (
 WINDOW = 13
 
 
-max_product = 0
-for start in range(len(NUMBER) - WINDOW + 1):
-    chunk = NUMBER[start : start + WINDOW]
-    product = math.prod(int(char) for char in chunk)
-    max_product = max(max_product, product)
+@wrapt_timeout_decorator.timeout(60)
+def solve():
+    """
+    >>> solve()
+    23514624000
+    """
 
-print(max_product)
+    max_product = 0
+    for start in range(len(NUMBER) - WINDOW + 1):
+        chunk = NUMBER[start : start + WINDOW]
+        product = math.prod(int(char) for char in chunk)
+        max_product = max(max_product, product)
+
+    return max_product

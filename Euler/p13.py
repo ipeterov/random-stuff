@@ -1,3 +1,6 @@
+import wrapt_timeout_decorator
+
+
 numbers = [
     37107287533902102798797998220837590246510135740250,
     46376937677490009712648124896970078050417018260538,
@@ -101,5 +104,13 @@ numbers = [
     53503534226472524250874054075591789781264330331690,
 ]
 
-s = sum(numbers)
-print(str(s)[:10])
+
+@wrapt_timeout_decorator.timeout(60)
+def solve():
+    """
+    >>> solve()
+    '5537376230'
+    """
+
+    s = sum(numbers)
+    return str(s)[:10]

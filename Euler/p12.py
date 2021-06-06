@@ -1,61 +1,62 @@
-import bisect
 import collections
+import itertools
 import math
 
+import wrapt_timeout_decorator
 
-class CachedPrimer:
-    def __init__(self):
-        self.known_primes = []
-        self.biggest_checked = 2
-
-    def primes_up_to(self, number) -> list[int]:
-        if number <= self.biggest_checked:
-            index = bisect.bisect_left(self.known_primes, number)
-            return self.known_primes[: index + 1]
-
-        for candidate in range(self.biggest_checked, number + 1):
-
-            def is_prime(candidate):
-                candidate_root = candidate ** 0.5
-                for known_prime in self.known_primes:
-                    if candidate % known_prime == 0:
-                        return False
-                    if known_prime > candidate_root:
-                        return True
-                return True
-
-            if is_prime(candidate):
-                self.known_primes.append(candidate)
-
-        self.biggest_checked = number
-
-        return self.known_primes
-
-    def number_prime_factors(self, number) -> list[int]:
-        factors = collections.Counter()
-        remainder = number
-        while remainder > 1:
-            for prime in self.primes_up_to(remainder):
-                if remainder % prime == 0:
-                    remainder = remainder // prime
-                    factors[prime] += 1
-                    break
-        return factors
-
-    def factors_count(self, number) -> int:
-        factors = self.number_prime_factors(number)
-        return math.prod(power + 1 for power in factors.values())
+from common.primer import CachedPrimer
 
 
 PRIMER = CachedPrimer()
-number = 1
-index = 1
-best_count = 0
-while (count := PRIMER.factors_count(number)) <= 500:
-    index += 1
-    number += index
-    if count >= best_count:
-        best_count = count
-        print(count, number)
-else:
-    print(count, number)
+
+
+# def smallest_possible_500_factors():  # INCORRECT
+#     first_500_primes = PRIMER.primes_up_to(stop_at_n_primes=500)
+#     best = math.inf
+#     prime_count = 500
+#     while prime_count > 1:
+#         factors = itertools.chain(*zip(*(first_500_primes for _ in range(prime_count))))
+#         candidate = 1
+#         used_factors = collections.Counter()
+
+#         while math.prod(used_factors.values()) < 500:
+#             factor = next(factors)
+#             used_factors[factor] += 1
+#             candidate *= factor
+
+#             if prime_count == 4:
+#                 print(factor)
+
+#         prime_count -= 1
+
+#         best = min(candidate, best)
+#     return best
+
+
+@wrapt_timeout_decorator.timeout(60)
+def solve():
+    """
+    >>> solve()
+    76576500
+    """
+
+    primer = CachedPrimer()
+    number = 1
+    print(
+        candidates,
+        smallest_possible_500_factors,
+        primer.factors_count(smallest_possible_500_factors),
+    )
+    index = 1
+    best_count = 0
+    while (count := primer.factors_count(number)) <= 500:
+        index += 1
+        number += index
+        if count >= best_count:
+            best_count = count
+            print(number, best_count)
+    else:
+        return number
+
+
+print(smallest_possible_500_factors())

@@ -1,3 +1,6 @@
+import wrapt_timeout_decorator
+
+
 class Delta:
     is_strong = False
 
@@ -59,4 +62,6 @@ def traverse(point):
     return paths_count
 
 
-print(traverse(START))
+@wrapt_timeout_decorator.timeout(60)
+def solve():
+    return traverse(START)

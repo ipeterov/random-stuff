@@ -1,9 +1,10 @@
 import itertools
 import math
-
 from collections import Counter
 from functools import wraps
 from time import perf_counter_ns
+
+import wrapt_timeout_decorator
 
 
 def timing(f):
@@ -63,27 +64,28 @@ def potential_factors(number):
         factor_lists.append(factors)
     return factor_lists
 
+@wrapt_timeout_decorator.timeout(60)
+def solve():
+    # Wrong, but pretty interesting still - pirnts out the highest HCF variant, not the HFC=1 variant
 
-target = 3 / 7
-best = 2 / 5, 2, 5
+    target = 3 / 7
+    best = 2 / 5, 2, 5
 
-for denominator in range(1, 1000001):
-    if denominator % 1000 == 0:
-        print(denominator)
+    for denominator in range(1, 1000001):
+        if denominator % 1000 == 0:
+            print(denominator)
 
-    for factors in itertools.product(*potential_factors(denominator)):
-        numerator = math.prod(factors)
+        for factors in itertools.product(*potential_factors(denominator)):
+            numerator = math.prod(factors)
 
-        current = numerator / denominator
+            current = numerator / denominator
 
-        if current < best[0]:
-            continue
+            if current < best[0]:
+                continue
 
-        if current > target:
-            continue
+            if current > target:
+                continue
 
-        best = current, numerator, denominator
+            best = current, numerator, denominator
 
-
-# Wrong, but pretty interesting still - pirnts out the highest HCF variant, not the HFC=1 variant
-print(best)
+    return best

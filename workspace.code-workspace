@@ -2,11 +2,17 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "Euler"
 		}
 	],
 	"settings": {
-		"python.analysis.extraPaths": [
-			"./Euler"
+		"python.sortImports.args": [
+			"--profile",
+			"black",
+			"--lines-after-imports",
+			"2"
 		],
 		"editor.formatOnSave": true,
 		"editor.formatOnType": true,

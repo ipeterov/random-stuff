@@ -1,5 +1,7 @@
 import math
 
+import wrapt_timeout_decorator
+
 
 def is_palindrome(number):
     s = str(number)
@@ -12,7 +14,13 @@ def is_palindrome(number):
     return True
 
 
+@wrapt_timeout_decorator.timeout(60)
 def solve():
+    """
+    >>> solve()
+    906609
+    """
+
     largest = 0
     for a in range(100, 1000):
         for b in range(100, 1000):
@@ -20,7 +28,3 @@ def solve():
             if product > largest and is_palindrome(product):
                 largest = product
     return largest
-
-
-if __name__ == "__main__":
-    print(solve())

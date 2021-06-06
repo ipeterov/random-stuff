@@ -1,3 +1,8 @@
+import wrapt_timeout_decorator
+
+from common.primer import CachedPrimer
+
+
 TARGET = 3 / 7
 
 
@@ -25,63 +30,40 @@ def best_numerator_using_binary(denominator):
     return best
 
 
-def primes_up_to(number) -> list[int]:
-    known_primes = []
-    for candidate in range(2, number + 1):
+@wrapt_timeout_decorator.timeout(60)
+def solve():
+    """
+    >>> solve()
+    428570
+    """
 
-        def is_prime(candidate):
-            candidate_root = candidate ** 0.5
-            for known_prime in known_primes:
-                if candidate % known_prime == 0:
-                    return False
-                if known_prime > candidate_root:
-                    return True
-            return True
+    best = 2 / 5, 2, 5
+    primer = CachedPrimer()
 
-        if is_prime(candidate):
-            known_primes.append(candidate)
+    for denominator in range(2, 1000001):
+        if denominator % 1000 == 0:
+            print(denominator)
 
-    return known_primes
+        denominator_prime_factors = primer.prime_factors(denominator).keys()
 
+        numerator = best_numerator_using_binary(denominator)
 
-known_primes = primes_up_to(1000000)
+        assert numerator / denominator < TARGET
 
+        def hcf_is_1(numerator):
+            common_factors = (
+                primer.prime_factors(numerator).keys() & denominator_prime_factors
+            )
+            return not common_factors
 
-def number_prime_factors(number) -> list[int]:
-    factors = set()
-    while number > 1:
-        for prime in known_primes:
-            if number % prime == 0:
-                number = number / prime
-                factors.add(prime)
-                break
-    return factors
+        while numerator / denominator > best[0] and not hcf_is_1(numerator):
+            numerator -= 1
 
+        current = numerator / denominator
+        assert current < TARGET
 
-best = 2 / 5, 2, 5
+        if current > best[0]:
+            best = current, numerator, denominator
 
-for denominator in range(2, 1000001):
-    if denominator % 1000 == 0:
-        print(denominator)
-
-    denominator_prime_factors = number_prime_factors(denominator)
-
-    numerator = best_numerator_using_binary(denominator)
-
-    assert numerator / denominator < TARGET
-
-    def hcf_is_1(numerator):
-        common_factors = number_prime_factors(numerator) & denominator_prime_factors
-        return not common_factors
-
-    while numerator / denominator > best[0] and not hcf_is_1(numerator):
-        numerator -= 1
-
-    current = numerator / denominator
-    assert current < TARGET
-
-    if current > best[0]:
-        best = current, numerator, denominator
-
-# Ended up using the code from both wrong solutions. Cool!
-print(best)  # (0.42857128571385716, 428570, 999997)
+    # Ended up using the code from both wrong solutions. Cool!
+    return best[1]  # (0.42857128571385716, 428570, 999997)

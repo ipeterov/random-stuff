@@ -1,45 +1,27 @@
+import collections
 import math
-from collections import Counter, defaultdict
+
+import wrapt_timeout_decorator
+
+from common.primer import CachedPrimer
 
 
-def primes_up_to(number) -> list[int]:
-    known_primes = []
-    for candidate in range(2, number + 1):
+@wrapt_timeout_decorator.timeout(60)
+def solve():
+    """
+    >>> solve()
+    232792560
+    """
+    PRIMER = CachedPrimer()
+    factors = collections.Counter()
+    for i in range(1, 21):
+        for factor, power in PRIMER.prime_factors(i).items():
+            factors[factor] = max(power, factors[factor])
 
-        def is_prime(candidate):
-            candidate_root = candidate ** 0.5
-            for known_prime in known_primes:
-                if candidate % known_prime == 0:
-                    return False
-                if known_prime > candidate_root:
-                    return True
-            return True
-
-        if is_prime(candidate):
-            known_primes.append(candidate)
-
-    return known_primes
+    return math.prod(factor ** power for factor, power in factors.items())
 
 
-known_primes = primes_up_to(1000000)
+if __name__ == "__main__":
+    import doctest
 
-
-def number_prime_factors(number) -> list[int]:
-    factors = Counter()
-    while number > 1:
-        for prime in known_primes:
-            if number % prime == 0:
-                number = number / prime
-                factors[prime] += 1
-                break
-    return factors
-
-
-factors = Counter()
-for i in range(1, 21):
-    for factor, power in number_prime_factors(i).items():
-        factors[factor] = max(power, factors[factor])
-
-
-print(factors)
-print(math.prod(factor ** power for factor, power in factors.items()))
+    doctest.testmod(verbose=True)

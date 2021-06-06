@@ -1,22 +1,15 @@
-def primes_up_to(number) -> list[int]:
-    known_primes = []
-    for candidate in range(2, number + 1):
+import wrapt_timeout_decorator
 
-        def is_prime(candidate):
-            candidate_root = candidate ** 0.5
-            for known_prime in known_primes:
-                if candidate % known_prime == 0:
-                    return False
-                if known_prime > candidate_root:
-                    return True
-            return True
-
-        if is_prime(candidate):
-            known_primes.append(candidate)
-
-    return known_primes
+from common.primer import CachedPrimer
 
 
-known_primes = primes_up_to(2000000)
+@wrapt_timeout_decorator.timeout(60)
+def solve():
+    """
+    >>> solve()
+    142913828922
+    """
 
-print(sum(known_primes))
+    primer = CachedPrimer()
+    known_primes = primer.primes_up_to(2000000)
+    return sum(known_primes)
